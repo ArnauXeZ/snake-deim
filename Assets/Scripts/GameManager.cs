@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         snake = snakeHeadGameObject.AddComponent<Snake>();
         
         // Configurar el LevelGrid
-        levelGrid = new LevelGrid(20, 20);
+        levelGrid = new LevelGrid(10, 10);
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
 
