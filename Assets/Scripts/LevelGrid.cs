@@ -1,14 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelGrid
 {
     private Vector2Int foodGridPosition;
     private GameObject foodGameObject;
-    
+
     private int width;
     private int height;
 
     private Snake snake;
+
+    public void SetMapSize(int newWidth, int newHeight)
+    {
+        width = newWidth;
+        height = newHeight;
+        //SpawnFood(); // Respawn food con la nueva configuraci�n
+    }
 
     public LevelGrid(int w, int h)
     {
@@ -42,17 +49,17 @@ public class LevelGrid
         // while (condicion){
         // cosas
         // }
-        
+
         // { cosas }
         // while (condicion)
-        
+
         do
         {
             foodGridPosition = new Vector2Int(
                 Random.Range(-width / 2, width / 2),
                 Random.Range(-height / 2, height / 2));
         } while (snake.GetFullSnakeBodyGridPosition().IndexOf(foodGridPosition) != -1);
-        
+
         foodGameObject = new GameObject("Food");
         SpriteRenderer foodSpriteRenderer = foodGameObject.AddComponent<SpriteRenderer>();
         foodSpriteRenderer.sprite = GameAssets.Instance.foodSprite;
@@ -63,7 +70,7 @@ public class LevelGrid
     {
         int w = Half(width);
         int h = Half(height);
-        
+
         // Me salgo por la derecha
         if (gridPosition.x > w)
         {
